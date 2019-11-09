@@ -9,5 +9,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body{
     color: #f7f8f8;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji
   }
 `;
