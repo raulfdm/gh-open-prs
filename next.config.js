@@ -5,7 +5,7 @@ const withCSS = require("@zeit/next-css");
 
 const nextConfig = {
   env: {
-    GITHUB_TOKEN: process.env.GITHUB_TOKEN
+    GITHUB_TOKEN: "@github_token"
   }
 };
 
