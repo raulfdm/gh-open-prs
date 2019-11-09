@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 
 import { REPOSITORY } from "../src/queries";
 
-import Nav from "../components/nav";
+import Nav from "../src/components/nav";
 
 const Home = () => {
   const { data, loading, error } = useQuery(REPOSITORY);
