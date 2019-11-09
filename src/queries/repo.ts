@@ -18,6 +18,7 @@ export const REPOSITORY = gql`
               title
               baseRefName
               headRefName
+              number
               id
               createdAt
               updatedAt
