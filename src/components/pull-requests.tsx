@@ -1,9 +1,21 @@
 import React from "react";
-// import styled from "styled-components";
+import styled from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
 import { PullRequest } from "./pull-request";
 
 import { PULL_REQUESTS_BY_REPO_NAME } from "../queries";
+
+const PullRequestsWrapper = styled.div`
+  position: relative;
+`;
+
+const RepoName = styled.h2`
+  position: sticky;
+  background-color: #252628;
+  margin: 0 -2px;
+  padding: 16px 5px;
+  top: 36px;
+`;
 
 type Data = {
   organization: {
@@ -28,12 +40,11 @@ const getPrFormated = (data: Data) => {
 };
 
 export const PullRequests = ({ repoName }: { repoName: string }) => {
-  const { data, loading, error } = useQuery(PULL_REQUESTS_BY_REPO_NAME, {
+  const { data, loading /* error */ } = useQuery(PULL_REQUESTS_BY_REPO_NAME, {
     variables: {
       name: repoName
     }
   });
-  console.log({ data, loading, error });
 
   if (loading) {
     return null;
@@ -42,10 +53,11 @@ export const PullRequests = ({ repoName }: { repoName: string }) => {
   const serializedData = getPrFormated(data);
 
   return (
-    <div>
+    <PullRequestsWrapper>
+      <RepoName>{repoName}</RepoName>
       {serializedData.edges.map((prData, index) => (
         <PullRequest key={index} {...prData.node} />
       ))}
-    </div>
+    </PullRequestsWrapper>
   );
 };

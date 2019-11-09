@@ -8,7 +8,7 @@ class MyApp extends App {
   render() {
     //@ts-ignore
     const { Component, pageProps, apollo } = this.props;
-    console.log({ Component, pageProps, apollo });
+
     return (
       <ApolloProvider client={apollo}>
         <Component {...pageProps} />

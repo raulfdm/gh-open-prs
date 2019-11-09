@@ -4,14 +4,25 @@ import Head from "next/head";
 import styled from "styled-components";
 import { GlobalStyle } from "../src/config/global-style";
 import { PullRequests } from "../src/components/pull-requests";
+import { BlendleLogo } from "../src/components/blendle-logo";
 
 const Wrapper = styled.div`
   /* background-color: #252628; */
 `;
 
 const PrsWrapper = styled.div`
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+`;
+
+const PageTitle = styled.h1`
+  margin: 0;
+  text-align: center;
+  padding-top: 16px;
+  z-index: 9;
+  position: sticky;
+  top: 0;
+  background-color: #252628;
 `;
 
 const Home = () => {
@@ -26,11 +37,13 @@ const Home = () => {
     <Wrapper>
       <GlobalStyle />
       <Head>
-        <title>Home</title>
+        <title>Blendle Pull Requests: FE</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Hello :)</h1>
+      <PageTitle>
+        <BlendleLogo />
+      </PageTitle>
 
       <PrsWrapper>
         {repoLists.map(repo => (
