@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-export const REPOSITORY = gql`
+export const PULL_REQUESTS_BY_REPO_NAME = gql`
   query PullRequests($name: String!) {
     organization(login: "blendle") {
       name

@@ -9,7 +9,19 @@ const Wrapper = styled.div`
   /* background-color: #252628; */
 `;
 
+const PrsWrapper = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
 const Home = () => {
+  const repoLists = [
+    "blendle-lego",
+    "blendle-web-client",
+    "web-proxy",
+    "web-payment",
+    "web-landings"
+  ];
   return (
     <Wrapper>
       <GlobalStyle />
@@ -19,7 +31,12 @@ const Home = () => {
       </Head>
 
       <h1>Hello :)</h1>
-      <PullRequests />
+
+      <PrsWrapper>
+        {repoLists.map(repo => (
+          <PullRequests key={repo} repoName={repo} />
+        ))}
+      </PrsWrapper>
     </Wrapper>
   );
 };

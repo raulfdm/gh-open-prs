@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { PullRequest } from "./pull-request";
 
-import { REPOSITORY } from "../queries";
+import { PULL_REQUESTS_BY_REPO_NAME } from "../queries";
 
 type Data = {
   organization: {
@@ -27,10 +27,10 @@ const getPrFormated = (data: Data) => {
   return data.organization.repository.pullRequests;
 };
 
-export const PullRequests = () => {
-  const { data, loading, error } = useQuery(REPOSITORY, {
+export const PullRequests = ({ repoName }: { repoName: string }) => {
+  const { data, loading, error } = useQuery(PULL_REQUESTS_BY_REPO_NAME, {
     variables: {
-      name: "blendle-web-client"
+      name: repoName
     }
   });
   console.log({ data, loading, error });
