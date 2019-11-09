@@ -1,18 +1,15 @@
 import React from "react";
 import Head from "next/head";
-// import { useQuery } from "@apollo/react-hooks";
+
 import styled from "styled-components";
 import { GlobalStyle } from "../src/config/global-style";
-
-// import { REPOSITORY } from "../src/queries";
+import { PullRequests } from "../src/components/pull-requests";
 
 const Wrapper = styled.div`
   /* background-color: #252628; */
 `;
 
 const Home = () => {
-  // const { data, loading, error } = useQuery(REPOSITORY);
-
   return (
     <Wrapper>
       <GlobalStyle />
@@ -22,6 +19,7 @@ const Home = () => {
       </Head>
 
       <h1>Hello :)</h1>
+      <PullRequests />
     </Wrapper>
   );
 };
