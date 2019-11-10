@@ -4,8 +4,12 @@ import Head from "next/head";
 import styled from "styled-components";
 import { GlobalStyle } from "../src/config/global-style";
 import { PullRequests } from "../src/components/pull-requests";
-import { BlendleLogo } from "../src/components/blendle-logo";
+// import { BlendleLogo } from "../src/components/blendle-logo";
+import { AppConfig } from "../src/types";
 
+type HomeType = {
+  config: AppConfig;
+};
 const Wrapper = styled.div``;
 
 const PrsWrapper = styled.div`
@@ -21,32 +25,33 @@ const PageTitle = styled.h1`
   position: sticky;
   top: 0;
   background-color: #252628;
+  img {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
 `;
 
-const Home = () => {
-  const repoLists = [
-    "blendle-lego",
-    "blendle-web-client",
-    "web-proxy",
-    "web-payment",
-    "web-landings"
-  ];
-
+const Home = ({ config }: HomeType) => {
   return (
     <Wrapper>
       <GlobalStyle />
       <Head>
-        <title>Blendle Pull Requests: FE</title>
+        <title>{config.organizationName} Pull Requests: FE</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <PageTitle>
-        <BlendleLogo />
+        <img src={config.logoUrl} alt="Organization logo" />
       </PageTitle>
 
       <PrsWrapper>
-        {repoLists.map(repo => (
-          <PullRequests key={repo} repoName={repo} />
+        {config.repositoriesToList.map(repo => (
+          <PullRequests
+            key={repo}
+            repositoryName={repo}
+            organizationName={config.organizationName}
+          />
         ))}
       </PrsWrapper>
     </Wrapper>

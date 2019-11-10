@@ -8,7 +8,8 @@ import { PullRequest } from "./pull-request";
 import { Organization } from "../types";
 
 type PullRequestsProps = {
-  repoName: string;
+  repositoryName: string;
+  organizationName: string;
 };
 
 const PullRequestsWrapper = styled.div`
@@ -20,7 +21,8 @@ const RepoName = styled.h2`
   background-color: #252628;
   margin: 0 -2px;
   padding: 16px 5px;
-  top: 36px;
+  /* TODO: How to make this value auto adjustable? */
+  top: 68px;
 
   a {
     color: #fff;
@@ -42,10 +44,14 @@ const getPrFormated = (data: { organization: Organization }) => ({
   ...data.organization.repository
 });
 
-export const PullRequests = ({ repoName }: PullRequestsProps) => {
+export const PullRequests = ({
+  repositoryName,
+  organizationName
+}: PullRequestsProps) => {
   const { data, loading /* error */ } = useQuery(PULL_REQUESTS_BY_REPO_NAME, {
     variables: {
-      name: repoName
+      repositoryName,
+      organizationName
     }
   });
 
@@ -59,7 +65,7 @@ export const PullRequests = ({ repoName }: PullRequestsProps) => {
     <PullRequestsWrapper>
       <RepoName>
         <a href={url} target="_blank" rel="noopener">
-          {repoName}
+          {repositoryName}
           <ExternalLinkIcon />
         </a>
       </RepoName>

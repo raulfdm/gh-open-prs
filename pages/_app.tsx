@@ -3,6 +3,7 @@ import App from "next/app";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 import withData from "../src/config/apollo-client";
+import config from "../open-pr-config";
 
 class MyApp extends App {
   render() {
@@ -11,7 +12,7 @@ class MyApp extends App {
 
     return (
       <ApolloProvider client={apollo}>
-        <Component {...pageProps} />
+        <Component {...pageProps} config={config} />
       </ApolloProvider>
     );
   }

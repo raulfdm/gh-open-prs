@@ -1,11 +1,11 @@
 import gql from "graphql-tag";
 
 export const PULL_REQUESTS_BY_REPO_NAME = gql`
-  query PullRequests($name: String!) {
-    organization(login: "blendle") {
+  query PullRequests($repositoryName: String!, $organizationName: String!) {
+    organization(login: $organizationName) {
       name
       url
-      repository(name: $name) {
+      repository(name: $repositoryName) {
         id
         url
         pullRequests(
