@@ -16,7 +16,9 @@ export const Labels = ({ labels }: any) => {
   return (
     <LabelsWrapper>
       {projectLabels.map(({ node }: any) => (
-        <Label color={node.color}>{node.name}</Label>
+        <Label color={node.color} key={node.name}>
+          {node.name}
+        </Label>
       ))}
     </LabelsWrapper>
   );
