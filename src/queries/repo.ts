@@ -9,7 +9,7 @@ export const PULL_REQUESTS_BY_REPO_NAME = gql`
         id
         url
         pullRequests(
-          last: 20
+          last: 100
           states: OPEN
           orderBy: { direction: DESC, field: CREATED_AT }
         ) {
@@ -24,7 +24,7 @@ export const PULL_REQUESTS_BY_REPO_NAME = gql`
               createdAt
               updatedAt
               url
-              labels(first: 20) {
+              labels(first: 100) {
                 edges {
                   node {
                     color
