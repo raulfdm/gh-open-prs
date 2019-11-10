@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 
 import { Labels } from "./labels";
-
-dayjs.extend(relativeTime);
+import { dayjs } from "../utils/date";
+import { PullRequestNode } from "../types";
 
 const Row = styled.div`
   background-color: #f6f8fa;
@@ -37,7 +35,6 @@ const InfoLink = styled.a`
   text-decoration: none;
   vertical-align: middle;
 
-  /* :hover */
   &:hover {
     color: #0366d6;
     outline: 0;
@@ -51,7 +48,7 @@ export const PullRequest = ({
   author,
   number,
   labels
-}: any) => {
+}: PullRequestNode) => {
   return (
     <Row>
       <InfoWrapper>

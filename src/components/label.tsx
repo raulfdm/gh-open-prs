@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 import { getFontColor } from "../utils/color";
 
+type LabelProps = {
+  children: React.ReactNode;
+  color: string;
+  key?: string;
+};
+
 const LabelWrapper = styled.p`
   background-color: ${props => `#${props.color}` || "grey"};
   border-radius: 2px;
@@ -27,6 +33,6 @@ const LabelWrapper = styled.p`
   }
 `;
 
-export const Label = ({ color, children }: any) => {
+export const Label = ({ color, children }: LabelProps) => {
   return <LabelWrapper color={color}>{children}</LabelWrapper>;
 };

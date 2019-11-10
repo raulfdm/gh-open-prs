@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
-import { PullRequest } from "./pull-request";
 
 import { PULL_REQUESTS_BY_REPO_NAME } from "../queries";
+import { PullRequest } from "./pull-request";
+import { Organization } from "../types";
+
+type PullRequestsProps = {
+  repoName: string;
+};
 
 const PullRequestsWrapper = styled.div`
   position: relative;
@@ -17,29 +22,11 @@ const RepoName = styled.h2`
   top: 36px;
 `;
 
-type Data = {
-  organization: {
-    name: string;
-    repository: {
-      id: string;
-      pullRequests: {
-        totalCount: number;
-        edges: Array<{
-          node: {
-            createdAt: string;
-            title: string;
-          };
-        }>;
-      };
-    };
-  };
-};
-
-const getPrFormated = (data: Data) => {
+const getPrFormated = (data: { organization: Organization }) => {
   return data.organization.repository.pullRequests;
 };
 
-export const PullRequests = ({ repoName }: { repoName: string }) => {
+export const PullRequests = ({ repoName }: PullRequestsProps) => {
   const { data, loading /* error */ } = useQuery(PULL_REQUESTS_BY_REPO_NAME, {
     variables: {
       name: repoName
@@ -55,8 +42,8 @@ export const PullRequests = ({ repoName }: { repoName: string }) => {
   return (
     <PullRequestsWrapper>
       <RepoName>{repoName}</RepoName>
-      {serializedData.edges.map((prData, index) => (
-        <PullRequest key={index} {...prData.node} />
+      {serializedData.edges.map(prData => (
+        <PullRequest key={prData.node.id} {...prData.node} />
       ))}
     </PullRequestsWrapper>
   );

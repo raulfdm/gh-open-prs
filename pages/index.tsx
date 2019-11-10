@@ -6,9 +6,7 @@ import { GlobalStyle } from "../src/config/global-style";
 import { PullRequests } from "../src/components/pull-requests";
 import { BlendleLogo } from "../src/components/blendle-logo";
 
-const Wrapper = styled.div`
-  /* background-color: #252628; */
-`;
+const Wrapper = styled.div``;
 
 const PrsWrapper = styled.div`
   max-width: 800px;
@@ -33,6 +31,7 @@ const Home = () => {
     "web-payment",
     "web-landings"
   ];
+
   return (
     <Wrapper>
       <GlobalStyle />
