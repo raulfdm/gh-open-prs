@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ExternalLink } from "styled-icons/evil/ExternalLink";
 
 import { Labels } from "./labels";
 import { dayjs } from "../utils/date";
@@ -34,11 +35,18 @@ const InfoLink = styled.a`
   font-weight: 600;
   text-decoration: none;
   vertical-align: middle;
+  position: relative;
 
   &:hover {
     color: #0366d6;
     outline: 0;
   }
+`;
+
+const ExternalLinkIcon = styled(ExternalLink)`
+  width: 16px;
+  top: -4px;
+  position: absolute;
 `;
 
 export const PullRequest = ({
@@ -54,6 +62,7 @@ export const PullRequest = ({
       <InfoWrapper>
         <InfoLink href={url} target="_blank" rel="noopener">
           {title}
+          <ExternalLinkIcon />
         </InfoLink>
         <Labels labels={labels} />
       </InfoWrapper>

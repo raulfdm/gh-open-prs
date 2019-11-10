@@ -10,7 +10,7 @@ type LabelsProps = {
 
 const LabelsWrapper = styled.div`
   display: inline-flex;
-  margin-left: 10px;
+  margin-left: 36px;
 `;
 
 export const Labels = ({ labels }: LabelsProps) => {
