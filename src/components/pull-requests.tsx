@@ -38,12 +38,9 @@ const ExternalLinkIcon = styled(ExternalLink)`
   position: absolute;
 `;
 
-const getPrFormated = (data: { organization: Organization }) => {
-  console.log(data.organization.repository);
-  return {
-    ...data.organization.repository
-  };
-};
+const getPrFormated = (data: { organization: Organization }) => ({
+  ...data.organization.repository
+});
 
 export const PullRequests = ({ repoName }: PullRequestsProps) => {
   const { data, loading /* error */ } = useQuery(PULL_REQUESTS_BY_REPO_NAME, {
