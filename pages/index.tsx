@@ -29,6 +29,7 @@ const PageTitle = styled.h1`
     background-color: white;
     padding: 10px;
     border-radius: 5px;
+    max-width: 100px;
   }
 `;
 
