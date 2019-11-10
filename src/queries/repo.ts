@@ -7,6 +7,7 @@ export const PULL_REQUESTS_BY_REPO_NAME = gql`
       url
       repository(name: $name) {
         id
+        url
         pullRequests(
           last: 20
           states: OPEN

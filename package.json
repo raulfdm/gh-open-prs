@@ -22,7 +22,8 @@
     "normalize.css": "^8.0.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styled-icons": "^8.6.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.7",
