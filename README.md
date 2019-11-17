@@ -1,53 +1,84 @@
 # Github Open PRs
 
-> Simple Page to keep tracking all open PRs from your repos
+> Simple Page to track open PR's for specifics projects.
+
+![App Home](./media/home.png)
 
 ## Before start
 
-This project uses Github GraphQL API. Differently from rest api, it _requires_ you being Authenticated.
+This project uses [Github GraphQL API](https://developer.github.com/v4/). Differently from their [REST API](https://developer.github.com/v3/), it **requires** you being Authenticated.
 
-So, first step is create a simple token to which can read your repo data ([check it here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)).
+### Generating a Token
 
-This token must be used as environment variable (secret).
+In their documentation, they said you need the same kind of token as required for CLI's ([check it here](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql)).
 
-## Getting Started
+However, I would say, you get the follow permissions:
 
-1. First step, fork (or not) and clone this repo.
-1. Install all dependencies
+```
+[x] repo (you need all in order to handle private proj.)
+  [x] repo:status
+  [x] repo:status
+  [x] repo_deployment
+  [x] public_repo
+  [x] repo:invite
+...
 
-   ```bash
-   yarn
-   ```
+[x] admin:org
+  [ ] write:org
+  [x] read:org
+...
+```
 
-1. Create a `.env` file with your token:
+Why? Just because this app does not need any right to **write** things, only read organization repositories.
 
-   ```env
-   GITHUB_TOKEN=<token-here>
-   ```
+## How to use
 
-1. Edit `open-pr-config.js` for what fits for you. You have to provide:
+### Track your Repos
 
-   - organizationName: organization user name, for instance on `https://github.com/nasa`, `nasa` should be the name
-   - repositoriesToList: a list of repositories you want to get PRs. For instance, on `https://github.com/nasa/XPlaneConnect`, `XPlaneConnect` will be the name
-   - logoUrl: a org logo url
+Basically you need to fill:
 
-   In the end your config will look like:
+- Organization name;
+- Repositories name split by comma;
+- Github Token API
 
-   ```js
-   module.exports = {
-     organizationName: "nasa",
-     repositoriesToList: ["XPlaneConnect", "fprime", "cumulus"],
-     logoUrl:
-       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1200px-NASA_logo.svg.png"
-   };
-   ```
+Then press search and everything will load :)
 
-1. Then run `yarn dev` and open `http://localhost:3000`. It'll be something like this:
-   ![Nasa Example](./media/example.png)
+![Basic Example](./media/pr-tracker-usage.gif)
 
-## Limitations
+All your settings will be saved via Cookies since the Token (and maybe your repository names) are a sensitive information.
 
-Github stablish some limits to the amount of PRs and labels you can get at once (100). So if it's more then that, it won't show.
+### Filter by label
+
+To only see specific label, you just need to click in the ones you don't have to see.
+
+![Filter Example](./media/pr-tracker-filter.gif)
+
+In order to keep the selection even if you close the App, this filter is saved via `localStorage`:
+
+```text
+key: `pr_tracker_label_by_repo`
+value: { <repoId>: <labelId>[] }
+```
+
+### Cleaning up
+
+If you want to remove all your data, it's only about:
+
+1. open the app
+1. Open your console
+1. Application
+1. Clear Site Data (must be localStorage and Cookies)
+
+## Development
+
+The same as any modern JS app:
+
+1. Fork/clone this project;
+1. navigate inside the folder;
+1. run `yarn` to install dependencies;
+1. then boot the server by running `yarn dev`
+
+Then your app will be available at `http://localhost:3000`
 
 ## Stack
 
@@ -56,18 +87,9 @@ Github stablish some limits to the amount of PRs and labels you can get at once 
 - ApolloClient
 - Styled Components
 
-## Known Issues
-
-> List of problems I'm aware or things which can be better
-
-- If the query fails for some reason, entire app will break. That's because currently I'm not rendling the `error` from API;
-- No Loader indicating query is Running;
-- If `logoUrl` is empty, it'll show a "broken img" instead does not render anything;
-- stickness of repo name is hard coded and it depends from the logo size;
-
 ## Issues
 
-PR's to make this thing better is always welcome! :)
+Maybe this is just the beginning. Feel free to report issues, come up with suggestions or improvements. PR's are always open! :)
 
 ## License
 
