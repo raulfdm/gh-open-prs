@@ -11,3 +11,13 @@ export type Label = {
 export type Labels = {
   edges: Label[];
 };
+
+export type LabelsProps = {
+  labels: Labels;
+};
+
+export type LabelProps = {
+  children: React.ReactNode;
+  color: string;
+  key?: string;
+};
