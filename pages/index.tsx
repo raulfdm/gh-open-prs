@@ -4,9 +4,10 @@ import styled from "styled-components";
 
 import { Projects } from "../src/components/projects/";
 import { Menu } from "../src/components/menu";
-import { PageTitle } from "../src/components/page-title";
 import { PageHead } from "../src/components/head";
 import { Footer } from "../src/components/footer";
+import { AppTitleBar } from "../src/components/app-title-bar";
+import { OrgTitle } from "../src/components/org-title";
 
 const Wrapper = styled.main``;
 
@@ -22,7 +23,8 @@ const Home = () => {
       <PageHead />
       <Menu>
         <ContentWrapper>
-          <PageTitle />
+          <AppTitleBar />
+          <OrgTitle />
           <Projects />
           <Footer />
         </ContentWrapper>

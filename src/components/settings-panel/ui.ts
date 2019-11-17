@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   padding: 0 0 16px;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h4`
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 0;
