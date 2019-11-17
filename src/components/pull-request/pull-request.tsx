@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Labels } from "../labels/labels";
+
 import { dayjs } from "../../utils/date";
 import { PullRequestNode } from "./types";
 

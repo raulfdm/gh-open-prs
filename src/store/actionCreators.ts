@@ -15,6 +15,15 @@ export function actionsCreator(dispatch: React.Dispatch<Action>) {
     },
     setOrgData(orgData: Organization) {
       dispatch({ type: ActionTypesEnum.SET_ORG_DATA, payload: orgData });
+    },
+    setFilteredLabels(repoId: string, labelId: string) {
+      dispatch({
+        type: ActionTypesEnum.UPDATE_FILTERED_LABELS_BY_REPO,
+        payload: {
+          repoId,
+          labelId
+        }
+      });
     }
   };
 }
