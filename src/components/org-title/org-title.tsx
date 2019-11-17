@@ -15,8 +15,6 @@ export const OrgTitle = () => {
     settings: { orgData }
   } = useSettings();
 
-  const DefaultCase = () => <>Pull Requests Tracker</>;
-
   const CompleteOrgInfo = () => (
     <>
       <LogoImg src={orgData.avatarUrl} alt="Organization logo" />
@@ -30,7 +28,7 @@ export const OrgTitle = () => {
   );
   const NoLogo = () => <OrgLink href={orgData.url}>{orgData.name}</OrgLink>;
 
-  let Component = DefaultCase;
+  let Component = null;
 
   if (orgData?.avatarUrl) {
     Component = CompleteOrgInfo;
@@ -38,11 +36,11 @@ export const OrgTitle = () => {
     Component = NoLogo;
   }
 
-  return (
+  return Component !== null ? (
     <OrgTitleSection>
       <OrgTitleStyled>
         <Component />
       </OrgTitleStyled>
     </OrgTitleSection>
-  );
+  ) : null;
 };
