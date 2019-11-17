@@ -6,6 +6,7 @@ export const PULL_REQUESTS_BY_REPO_NAME = gql`
       name
       url
       avatarUrl
+      description
       repository(name: $repositoryName) {
         id
         url

@@ -29,7 +29,7 @@ export const RepositoryNameWrapper = styled.div`
   z-index: 2;
 `;
 
-export const RepositoryName = styled.h2`
+export const RepositoryName = styled.h3`
   margin: 0;
   a {
     color: #fff;
