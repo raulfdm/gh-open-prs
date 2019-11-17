@@ -13,6 +13,7 @@ export const Section = styled.section`
   width: 100%;
   align-self: stretch;
   padding: 0 1rem;
+  margin-bottom: 2rem;
 `;
 
 export const PullRequestsWrapper = styled.div`
