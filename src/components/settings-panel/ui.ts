@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   margin: 0 0 24px;
   min-width: 0;
   padding: 0 0 16px;
+  flex: 1;
 `;
 
 export const Title = styled.h4`
@@ -48,4 +49,23 @@ export const SearchButton = styled.button`
     border-color: rgba(27, 31, 35, 0.35);
     text-decoration: none;
   }
+`;
+
+export const CleanDataButton = styled.button`
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  color: tomato;
+  padding: 0;
+
+  align-self: center;
+  cursor: pointer;
+`;
+
+export const SettingsSection = styled.section`
+  padding: 16px;
+  max-width: 500px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;

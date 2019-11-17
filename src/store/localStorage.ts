@@ -45,3 +45,13 @@ export function setLabelsByRepo(labelsByRepo: { [id: string]: string[] }) {
     );
   }
 }
+
+export function cleanUpSettings() {
+  if (process.browser) {
+    Cookies.remove(COOKIE_KEYS.API_TOKEN);
+    Cookies.remove(COOKIE_KEYS.ORG_NAME);
+    Cookies.remove(COOKIE_KEYS.REPOS);
+
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.LABEL_BY_REPO);
+  }
+}

@@ -7,11 +7,6 @@ import { SettingsPanel } from "./settings-panel";
 
 const WIDTH = "400px";
 
-const SidebarWrapper = styled.section`
-  padding: 16px;
-  max-width: 500px;
-`;
-
 const OpenButton: any = styled.button`
   border: none;
   background-color: #393b3e;
@@ -38,11 +33,7 @@ export const Menu = (props: { children: React.ReactNode }) => {
     <Sidebar
       shadow={false}
       docked={isOpen}
-      sidebar={
-        <SidebarWrapper>
-          <SettingsPanel />
-        </SidebarWrapper>
-      }
+      sidebar={<SettingsPanel />}
       onSetOpen={toggleSidebar}
       styles={{
         sidebar: { background: "#393b3e", width: WIDTH }

@@ -1,30 +1,51 @@
 import React from "react";
 
-import { ActionTypesEnum, Action } from "./reducer";
+import { ActionTypesEnum, Action, initialState } from "./reducer";
 import { Settings, Repository, Organization } from "../types";
-import { setSettings } from "./localStorage";
+import { setSettings, cleanUpSettings } from "./localStorage";
 
 export function actionsCreator(dispatch: React.Dispatch<Action>) {
-  return {
-    updateSettings(settings: Settings) {
-      setSettings(settings);
-      dispatch({ type: ActionTypesEnum.UPDATE_SETTINGS, payload: settings });
-    },
-    addRepo(repo: Repository) {
-      dispatch({ type: ActionTypesEnum.ADD_REPO, payload: repo });
-    },
-    setOrgData(orgData: Organization) {
-      dispatch({ type: ActionTypesEnum.SET_ORG_DATA, payload: orgData });
-    },
-    setFilteredLabels(repoId: string, labelId: string) {
-      dispatch({
-        type: ActionTypesEnum.UPDATE_FILTERED_LABELS_BY_REPO,
-        payload: {
-          repoId,
-          labelId
-        }
-      });
+  function updateSettings(settings: Settings) {
+    setSettings(settings);
+    dispatch({ type: ActionTypesEnum.UPDATE_SETTINGS, payload: settings });
+  }
+
+  function addRepo(repo: Repository) {
+    dispatch({ type: ActionTypesEnum.ADD_REPO, payload: repo });
+  }
+
+  function setOrgData(orgData: Organization) {
+    dispatch({ type: ActionTypesEnum.SET_ORG_DATA, payload: orgData });
+  }
+
+  function setFilteredLabels(repoId: string, labelId: string) {
+    dispatch({
+      type: ActionTypesEnum.UPDATE_FILTERED_LABELS_BY_REPO,
+      payload: {
+        repoId,
+        labelId
+      }
+    });
+  }
+
+  function cleanSettings() {
+    const confirmation = confirm(
+      "Do you really want to clean up your settings saved?"
+    );
+
+    if (confirmation) {
+      cleanUpSettings();
+      //@ts-ignore
+      updateSettings(initialState);
     }
+  }
+
+  return {
+    updateSettings,
+    addRepo,
+    setOrgData,
+    setFilteredLabels,
+    cleanSettings
   };
 }
 
