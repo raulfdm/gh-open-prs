@@ -30,7 +30,6 @@ export const InfoLink = styled.a`
   font-weight: 600;
   text-decoration: none;
   vertical-align: middle;
-  position: relative;
 
   &:hover {
     color: #0366d6;
