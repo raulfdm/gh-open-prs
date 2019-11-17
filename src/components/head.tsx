@@ -11,7 +11,7 @@ export const PageHead = () => {
     <>
       <GlobalStyle />
       <Head>
-        <title>{settings.orgName} Pull Requests: FE</title>
+        <title>{settings.orgData.name} Pull Requests</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
     </>
