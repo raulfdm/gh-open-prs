@@ -8,6 +8,7 @@ export const Section = styled.section`
   flex: 1;
   overflow-y: auto;
   max-width: 960px;
+  min-width: 300px;
   margin: 0 auto;
   width: 100%;
   align-self: stretch;
@@ -24,6 +25,7 @@ export const RepositoryNameWrapper = styled.div`
   background-color: #252628;
   padding: 16px 5px;
   margin: 0 -2px;
+  z-index: 2;
 `;
 
 export const RepositoryName = styled.h2`

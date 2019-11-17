@@ -17,7 +17,7 @@ const OpenButton: any = styled.button`
   background-color: #393b3e;
   border-radius: 3px;
   left: -3px;
-  z-index: 3;
+  z-index: 4;
   color: white;
   position: absolute;
 

@@ -9,8 +9,9 @@ const OrgLink = styled.a`
 
 const Title = styled.h1`
   margin: 0;
+  z-index: 3;
   text-align: center;
-  padding-top: 16px;
+  padding: 16px 0;
   margin: -1px;
   position: sticky;
   top: 0;

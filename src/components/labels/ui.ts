@@ -19,11 +19,10 @@ export const LabelWrapper = styled.p`
   padding: 0.15em 4px;
   text-decoration: none;
 
-  margin: 0;
-  margin-left: 5px;
-
   display: flex;
   align-items: center;
+
+  margin: 0;
 
   &:hover {
     outline: 0;

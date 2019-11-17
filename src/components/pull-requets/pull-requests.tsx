@@ -6,6 +6,7 @@ import { PullRequestsProps } from "./types";
 import { RegularMessage } from "../projects/ui";
 import { serializeLabelFromPrs } from "./utils";
 import { useSettings } from "../../store/store";
+// import { PullRequestsSection } from "./ui";
 
 export const PullRequests = ({ prs, projectId }: PullRequestsProps) => {
   const { settings, actions } = useSettings();
@@ -25,29 +26,33 @@ export const PullRequests = ({ prs, projectId }: PullRequestsProps) => {
         selectedLabel={filteredLabels}
         onLabelClick={labelHandler(projectId)}
       />
-      {prs.length > 0 ? (
-        prs.map(({ node }) => {
-          const updatedNode = { ...node };
+      <div>
+        {prs.length > 0 ? (
+          prs.map(({ node }) => {
+            const updatedNode = { ...node };
 
-          if (updatedNode.labels.edges.length === 0) {
-            updatedNode.labels.edges = [{ node: noLabel }];
-          }
+            if (updatedNode.labels.edges.length === 0) {
+              updatedNode.labels.edges = [{ node: noLabel }];
+            }
 
-          const prLabels = updatedNode.labels.edges.map(label => label.node.id);
-          const shouldPrBeRendered = !prLabels.some(labelId =>
-            filteredLabels.includes(labelId)
-          );
+            const prLabels = updatedNode.labels.edges.map(
+              label => label.node.id
+            );
+            const shouldPrBeRendered = !prLabels.some(labelId =>
+              filteredLabels.includes(labelId)
+            );
 
-          if (shouldPrBeRendered) {
-            return <PullRequest key={node.id} {...updatedNode} />;
-          }
-          return null;
-        })
-      ) : (
-        <RegularMessage>
-          There are no PR's opened for this project.
-        </RegularMessage>
-      )}
+            if (shouldPrBeRendered) {
+              return <PullRequest key={node.id} {...updatedNode} />;
+            }
+            return null;
+          })
+        ) : (
+          <RegularMessage>
+            There are no PR's opened for this project.
+          </RegularMessage>
+        )}
+      </div>
     </>
   );
 };
