@@ -1,17 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 
 import { Label } from "./label";
-import { Labels as LabelsTypes } from "../types";
-
-type LabelsProps = {
-  labels: LabelsTypes;
-};
-
-const LabelsWrapper = styled.div`
-  display: inline-flex;
-  margin-left: 36px;
-`;
+import { LabelsProps } from "./types";
+import { LabelsWrapper } from "./ui";
 
 export const Labels = ({ labels }: LabelsProps) => {
   const projectLabels = labels.edges || [];

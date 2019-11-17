@@ -9,10 +9,7 @@ const GRAPHQL_URL = "https://api.github.com/graphql";
 
 const link = createHttpLink({
   fetch, // Switches between unfetch & node-fetch for client & server.
-  uri: GRAPHQL_URL,
-  headers: {
-    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
-  }
+  uri: GRAPHQL_URL
 });
 
 // Export a HOC from next-with-apollo

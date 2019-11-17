@@ -5,9 +5,11 @@ export const PULL_REQUESTS_BY_REPO_NAME = gql`
     organization(login: $organizationName) {
       name
       url
+      avatarUrl
       repository(name: $repositoryName) {
         id
         url
+        name
         pullRequests(
           last: 100
           states: OPEN
