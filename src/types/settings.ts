@@ -8,6 +8,9 @@ export type PartialSettings = {
 };
 
 export type Settings = PartialSettings & {
+  filteredLabelsByRepoId: {
+    [repoId: string]: string[];
+  };
   reposList: string[];
   orgData: Organization;
   repositories: { [repoName: string]: Repository };

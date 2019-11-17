@@ -12,8 +12,8 @@ import {
 import { PULL_REQUESTS_BY_REPO_NAME } from "../../queries";
 import { useSettings } from "../../store/store";
 import { LoaderIcon } from "../loader-svg";
-import { PullRequest } from "../pull-request/";
-import { PullRequest as PrType } from "../pull-request/types";
+
+import { PullRequests } from "../pull-requets/pull-requests";
 
 export const Project = ({ repoName, orgName }: ProjectProps) => {
   const { actions, settings } = useSettings();
@@ -90,13 +90,7 @@ export const Project = ({ repoName, orgName }: ProjectProps) => {
           </a>
         </RepositoryName>
       </RepositoryNameWrapper>
-      {prs.length > 0 ? (
-        prs.map(({ node }: PrType) => <PullRequest key={node.id} {...node} />)
-      ) : (
-        <RegularMessage>
-          There are no PR's opened for this project.
-        </RegularMessage>
-      )}
+      <PullRequests prs={prs} projectId={repo.id} />
     </>
   );
 };
