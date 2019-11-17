@@ -8,6 +8,16 @@ const WelcomeStyled = styled.section`
   }
 `;
 
+const Break = styled.br`
+  display: block;
+  margin-bottom: 1rem;
+`;
+
+const ImgExample = styled.img`
+  max-width: 100%;
+  height: auto;
+`;
+
 const List = styled.ul`
   margin-bottom: 2rem;
 `;
@@ -53,13 +63,22 @@ export const Welcome = () => {
         </Items>
         <Items>
           Your Github API Token. Don't know how or why?{" "}
-          <a href="https://github.com/raulfdm/gh-open-prs">
-            Check this project README.
+          <a href="https://github.com/raulfdm/gh-open-prs#before-start">
+            Check it here
           </a>
         </Items>
       </List>
 
-      <TopicTitle>Is this Secure? 👮‍♂️</TopicTitle>
+      <div>
+        <ImgExample
+          src="https://github.com/raulfdm/gh-open-prs/raw/master/media/pr-tracker-usage.gif"
+          alt="usage example"
+        />
+      </div>
+
+      <Break />
+
+      <TopicTitle>Is this app Secure? 👮‍♂️</TopicTitle>
       <p>
         Any information here is send to anywhere. All your{" "}
         <Example>settings</Example> are saved on Cookies <span>🍪</span>. The
