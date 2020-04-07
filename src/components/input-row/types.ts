@@ -1,5 +1,5 @@
 export type InputRowProps = {
   label: string;
   name: string;
-  inputProps?: any;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };

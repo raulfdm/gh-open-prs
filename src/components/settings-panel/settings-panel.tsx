@@ -6,7 +6,7 @@ import {
   Title,
   Wrapper,
   CleanDataButton,
-  SettingsSection
+  SettingsSection,
 } from "./ui";
 import { SettingsPanelProps } from "./types";
 import { InputRow } from "../input-row/";
@@ -15,6 +15,7 @@ import { useSettings } from "../../store/store";
 
 export const SettingsPanel = ({ onSearch }: SettingsPanelProps) => {
   const { settings, actions } = useSettings();
+  const [showToken, setShowToken] = React.useState(false);
 
   return (
     <SettingsSection>
@@ -24,7 +25,7 @@ export const SettingsPanel = ({ onSearch }: SettingsPanelProps) => {
           validateOnBlur
           initialValues={settings}
           validate={validateSettings}
-          onSubmit={values => {
+          onSubmit={(values) => {
             actions.updateSettings(values);
             if (onSearch) {
               onSearch();
@@ -32,16 +33,30 @@ export const SettingsPanel = ({ onSearch }: SettingsPanelProps) => {
           }}
           render={({ handleSubmit }) => {
             return (
-              <form onSubmit={handleSubmit}>
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  handleSubmit();
+                }}
+              >
                 <InputRow name="orgName" label="Organization Name" />
                 <InputRow
                   name="repos"
                   label="Repositories (separated by comma)"
                 />
 
-                <InputRow name="apiToken" label="Github API Token" />
+                <InputRow
+                  name="apiToken"
+                  label="Github API Token"
+                  inputProps={{ type: showToken ? "text" : "password" }}
+                />
 
-                <SearchButton type="submit">Search</SearchButton>
+                <div>
+                  <SearchButton type="submit">Search</SearchButton>
+                  <SearchButton onClick={() => setShowToken(!showToken)}>
+                    Show token
+                  </SearchButton>
+                </div>
               </form>
             );
           }}

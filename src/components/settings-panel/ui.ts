@@ -41,6 +41,10 @@ export const SearchButton = styled.button`
   vertical-align: middle;
   white-space: nowrap;
 
+  &:not(:first-child) {
+    margin-left: 16px;
+  }
+
   /* :hover */
   &:hover {
     background-color: #e6ebf1;

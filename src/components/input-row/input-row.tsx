@@ -4,7 +4,11 @@ import { Field } from "react-final-form";
 import { InputRowProps } from "./types";
 import { ErrorLabel, InputWrapper, LabelWrapper, Row } from "./ui";
 
-export const InputRow = ({ label, name, inputProps }: InputRowProps) => {
+export const InputRow: React.FC<InputRowProps> = ({
+  label,
+  name,
+  inputProps,
+}) => {
   return (
     <Row>
       <LabelWrapper>
