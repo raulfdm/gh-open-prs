@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ExternalLink } from "styled-icons/evil/ExternalLink";
+import { ExternalLink } from "@styled-icons/evil/ExternalLink";
 
 export const Row = styled.div`
   background-color: #f6f8fa;

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Github } from "styled-icons/boxicons-logos/Github";
-import { Heart } from "styled-icons/octicons/Heart";
+import { Github } from "@styled-icons/boxicons-logos/Github";
+import { Heart } from "@styled-icons/octicons/Heart";
 
 const StyledFooter = styled.footer`
   background: rgb(57, 59, 62);

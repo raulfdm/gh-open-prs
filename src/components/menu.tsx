@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "react-sidebar";
 import styled from "styled-components";
-import { Settings as SettingsIcon } from "styled-icons/octicons/Settings";
+import { Settings as SettingsIcon } from "@styled-icons/octicons/Settings";
 
 import { SettingsPanel } from "./settings-panel";
 
@@ -36,7 +36,7 @@ export const Menu = (props: { children: React.ReactNode }) => {
       sidebar={<SettingsPanel />}
       onSetOpen={toggleSidebar}
       styles={{
-        sidebar: { background: "#393b3e", width: WIDTH }
+        sidebar: { background: "#393b3e", width: WIDTH },
       }}
     >
       <OpenButton onClick={toggleSidebar} isOpen={isOpen}>
