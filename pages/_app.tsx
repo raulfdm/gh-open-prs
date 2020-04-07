@@ -1,6 +1,7 @@
 import React from "react";
 import App from "next/app";
 import { ApolloProvider } from "@apollo/react-hooks";
+import "normalize.css";
 
 import withData from "../src/config/apollo-client";
 import { SettingsProvider } from "../src/store/store";
