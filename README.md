@@ -75,8 +75,8 @@ The same as any modern JS app:
 
 1. Fork/clone this project;
 1. navigate inside the folder;
-1. run `yarn` to install dependencies;
-1. then boot the server by running `yarn dev`
+1. run `pnpm` to install dependencies;
+1. then boot the server by running `pnpm run dev`
 
 Then your app will be available at `http://localhost:3000`
 
