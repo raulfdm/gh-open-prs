@@ -1,0 +1,7 @@
+docker-compose.yaml
+.pnpm-store
+.vscode
+.next
+node_modules
+.git
+.gitignore

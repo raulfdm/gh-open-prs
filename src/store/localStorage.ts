@@ -14,7 +14,7 @@ enum LOCAL_STORAGE_KEYS {
 }
 
 export function getSettings(): PartialSettings | {} {
-  if (process.browser) {
+  if (process.hasOwnProperty('browser')) {
     const apiToken = Cookies.get(COOKIE_KEYS.API_TOKEN);
     const orgName = Cookies.get(COOKIE_KEYS.ORG_NAME);
     const repos = Cookies.get(COOKIE_KEYS.REPOS);
@@ -28,7 +28,7 @@ export function getSettings(): PartialSettings | {} {
 }
 
 export function setSettings(settings: Settings) {
-  if (process.browser) {
+  if (process.hasOwnProperty('browser')) {
     const { apiToken, repos, orgName } = getPartialSettings(settings);
 
     Cookies.set(COOKIE_KEYS.API_TOKEN, apiToken);
@@ -38,7 +38,7 @@ export function setSettings(settings: Settings) {
 }
 
 export function setLabelsByRepo(labelsByRepo: { [id: string]: string[] }) {
-  if (process.browser) {
+  if (process.hasOwnProperty('browser')) {
     localStorage.setItem(
       LOCAL_STORAGE_KEYS.LABEL_BY_REPO,
       JSON.stringify(labelsByRepo)
@@ -47,7 +47,7 @@ export function setLabelsByRepo(labelsByRepo: { [id: string]: string[] }) {
 }
 
 export function cleanUpSettings() {
-  if (process.browser) {
+  if (process.hasOwnProperty('browser')) {
     Cookies.remove(COOKIE_KEYS.API_TOKEN);
     Cookies.remove(COOKIE_KEYS.ORG_NAME);
     Cookies.remove(COOKIE_KEYS.REPOS);
